@@ -1,52 +1,51 @@
-# smart-contract-vue
+# Web 3.0 template
 
-This template should help get you started developing with Vue 3 in Vite.
+This template should help get you started developing a web3.0 application with Vue.js (v3), TailwindCSS and Typescript. This is a work in progress project and I'll be adding new features.
 
-## Recommended IDE Setup
+## Requirements
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+This template requires de following environment variables
 
-## Type Support for `.vue` Imports in TS
+- VITE_BLOCKCHAIN_NETWORK_NAME: Name of the network in which the app runs (or where the smart contracts are deployed)
+- VITE_BLOCKCHAIN_NETWORK_ID: Network Id in format 0xN. Rinkeby is 0x4 for example.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## Features
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+This projects includes multiple features out of the box including:
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+- Metamask wallet integration: there is a "Connect Wallet" button that triggers Metamask authorization
+- State management: the metamask wallet account info is kept in a store using Pinia. That way, it can be accessed from multiple views and components.
+- TailwindCSS integration
+- Vue router
 
-## Customize configuration
+## Environment variables
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Rename the `.env.example` file to `.env` and change the variables to the protocol name and id (in 0x format) for your project.
 
-## Project Setup
+## Done
 
-```sh
-npm install
-```
+- [x] Identify if connected blockchain is the correct one.
 
-### Compile and Hot-Reload for Development
+## To-Do:
 
-```sh
-npm run dev
-```
+- [ ] Disconnect wallet button
+- [ ] Support for multiple accounts instead of just one
+- [ ] Support for other wallets
 
-### Type-Check, Compile and Minify for Production
+### How I built this project step-by-step
 
-```sh
-npm run build
-```
+Created new Vite project with `npm init vite@latest web3-template-vue `
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+Installed all dependenciess `npm install`
 
-```sh
-npm run test:unit
-```
+Installed TailwindCSS following [the official guide](https://tailwindcss.com/docs/guides/vite)
 
-### Lint with [ESLint](https://eslint.org/)
+Installed Pinia `npm i pinia` and created a basic wallet store in `src/store/wallet.ts`
 
-```sh
-npm run lint
-```
+Installed vue-router (v4) and created a couple of views
+
+Created a NavBar component with the buttons to connect Metamask wallet, save wallet info in store and navigate between routes
+
+Installed node types to use `process.env` with `npm install @types/node --save-dev`
+
+Fixed @ imports in `vite.config.js`
